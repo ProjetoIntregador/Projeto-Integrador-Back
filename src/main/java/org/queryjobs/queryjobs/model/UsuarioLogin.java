@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class UsuarioLogin {
+	
+	private long id;
 
 	private String nomeusuario; //ok
-	private Boolean empregador; //ok
+	private String empregador; //ok
 	private LocalDate datanascimento;
 	private String email; // ok
 	private String senha; // ok 
