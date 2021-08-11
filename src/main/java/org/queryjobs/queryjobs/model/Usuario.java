@@ -31,7 +31,7 @@ public class Usuario {
 	private long id;
 	
 	@NotNull(message="O nome é obrigatório!")
-	@Size(min=10 , max=300)
+	@Size(min=3 , max=300)
 	private String nomeusuario;
 	
 	@NotNull(message="A idade é obrigatória!")
