@@ -1,5 +1,6 @@
 package org.queryjobs.queryjobs.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.queryjobs.queryjobs.model.Produto;
 import org.queryjobs.queryjobs.repository.ProdutoRepository;
@@ -38,6 +39,27 @@ public class ProdutoController {
 			.orElse(ResponseEntity.notFound().build());
 	}
 
+	@GetMapping("/tema/{tema}")
+	public ResponseEntity<List<Produto>> GetByTema(@PathVariable String tema) {
+		return ResponseEntity.ok(produtorepository.findAllByTemaContainingIgnoreCase(tema));
+	}
+	
+	@GetMapping("/experiencia/{experiencia}")
+	public ResponseEntity<List<Produto>> GetByExperiencia(@PathVariable String experiencia) {
+		return ResponseEntity.ok(produtorepository.findAllByExperienciaContainingIgnoreCase(experiencia));
+	}
+	
+	@GetMapping("/valormaior/{valor}")
+	public ResponseEntity<List<Produto>> GetByValorGreaterThan(@PathVariable BigDecimal valor) {
+		return ResponseEntity.ok(produtorepository.findAllByValorGreaterThan(valor));
+	}
+	
+	@GetMapping("/valormenor/{valor}")
+	public ResponseEntity<List<Produto>> GetByValorLessThan(@PathVariable BigDecimal valor) {
+		return ResponseEntity.ok(produtorepository.findAllByValorLessThan(valor));
+	}
+	
+	
 	@GetMapping("/especificacao/{especificacao}")
 	public ResponseEntity<List<Produto>> GetByEspecificacao(@PathVariable String especificacao) {
 		return ResponseEntity.ok(produtorepository.findAllByEspecificacaoContainingIgnoreCase(especificacao));

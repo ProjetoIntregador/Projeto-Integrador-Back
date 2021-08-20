@@ -28,8 +28,8 @@ public class CategoriaController {
 
 	@GetMapping
 	public HttpEntity<List<Categoria>> GetAll() {
-		return ResponseEntity.ok(repository.findAll()); // OK = 200 }
-	} // Aqui é onde de fato define o método que foi assinado lá no repositório.
+		return ResponseEntity.ok(repository.findAll()); 
+	} 
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> GetById(@PathVariable long id) {
@@ -41,6 +41,11 @@ public class CategoriaController {
 	@GetMapping("/tipotrabalho/{tipotrabalho}")
 	public ResponseEntity<List<Categoria>> GetByTipo_trabalho(@PathVariable String tipotrabalho) {
 		return ResponseEntity.ok(repository.findAllByTipotrabalhoContainingIgnoreCase(tipotrabalho));
+	}
+	
+	@GetMapping("/palavrachave/{palavrachave}")
+	public ResponseEntity<List<Categoria>> GetByPalavraChave(@PathVariable String palavrachave) {
+		return ResponseEntity.ok(repository.findAllByPalavrachaveContainingIgnoreCase(palavrachave));
 	}
 
 	@PostMapping
